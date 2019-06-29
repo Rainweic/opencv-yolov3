@@ -7,7 +7,8 @@
 
 ## install:
     git clone https://github.com/Rainweic/Regional-Object-Detection.git
-    cd Regional-Object-Detection/yolo_v3_config
+    mkdir opencv-yolov3/yolo_v3_config
+    cd opencv-yolov3/yolo_v3_config
     wget https://pjreddie.com/media/files/yolov3.weights
     wget https://github.com/pjreddie/darknet/blob/master/cfg/yolov3.cfg?raw=true -O ./yolov3.cfg
     wget https://github.com/pjreddie/darknet/blob/master/data/coco.names?raw=true -O ./coco.names
