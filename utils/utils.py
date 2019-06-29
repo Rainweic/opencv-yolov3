@@ -21,8 +21,36 @@ def draw_bbox_label(image, classes, classIds, bboxes, confidences):
         y = max(bbox[1], labelSize[1])
         cv.putText(image, label, (x, y), cv.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,255))
 
-def process_video(args, net, img, classes):
-    pass
+def process_video(args, net, classes):
+    cap = cv.VideoCapture(eval(args.video))
+
+    # Get video information
+    fps = int(cap.get(cv.CAP_PROP_FPS))
+    width = int(cap.get(cv.CAP_PROP_FRAME_WIDTH))
+    height = int(cap.get(cv.CAP_PROP_FRAME_HEIGHT))
+
+    save_cap = cv.VideoWriter("./output.mp4", cv.VideoWriter_fourcc('M', 'P', '4', 'V'), fps, (width,height))
+
+    while(cap.isOpened()):
+        ret, frame = cap.read()
+        if not ret:
+            print("Video is over")
+            print("The video is output.mp4")
+            break
+        # deal with the frame
+        classIds, bboxes, confidences = process_img(args, net, frame, classes)
+        # draw bbox and text
+        draw_bbox_label(frame, classes, classIds, bboxes, confidences)
+        
+        # Show frame
+        cv.imshow("video", frame)
+        cv.waitKey(0)
+
+        # Save video 
+        save_cap.write(frame)
+    cap.release()
+    save_cap.release()
+    cv.destroyAllWindows()
 
 def process_img(args, net, img, classes):
     """

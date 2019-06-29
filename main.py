@@ -73,4 +73,4 @@ if __name__ == '__main__':
         image = cv.imread(args.image)
         utils.process_img(args, net, image, classes)
     elif args.video:
-        pass
+        utils.process_video(args, net, classes)
