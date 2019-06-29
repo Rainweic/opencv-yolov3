@@ -1,5 +1,5 @@
 
-# 利用opencv+yolo v3模型对给定的区域进行物体检测, 若出现违规物体则报警
+# Use YOLO-V3 By opencv3 or opencv4
 
 ## request:
     python3
@@ -15,3 +15,6 @@
 ## test:
     #Testing the Detection Effect of YOLO V3 With Single Picture
     python3 main.py --image test.jpg
+
+  ![Original picture](test.jpg)
+  ![output](output.jpg)
