@@ -22,7 +22,7 @@ def draw_bbox_label(image, classes, classIds, bboxes, confidences):
         cv.putText(image, label, (x, y), cv.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,255))
 
 def process_video(args, net, classes):
-    cap = cv.VideoCapture(eval(args.video))
+    cap = cv.VideoCapture(args.video)
 
     # Get video information
     fps = int(cap.get(cv.CAP_PROP_FPS))
