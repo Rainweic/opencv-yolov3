@@ -19,3 +19,6 @@
 
   ![Original picture](test.jpg)
   ![output](output.jpg)
+
+    #Testing the Detection Effect of YOLO V3 With Video
+    python3 main.py --image path_to_video
